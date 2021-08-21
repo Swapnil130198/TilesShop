@@ -15,15 +15,15 @@ public partial class logibnpage : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        OleDbConnection con = new OleDbConnection();
+        OleDbConnection conn = new OleDbConnection();
         OleDbCommand cmd = new OleDbCommand();
-        con.ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\momdad\Documents\pramod.mdb";
-        cmd.Connection = con;
+        conn.ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\momdad\Documents\pramod.mdb";
+        cmd.Connection = conn;
         String sql = "insert into pramodtabels values('"+TextBox1.Text+"','"+TextBox2.Text+"')";
        
         try
         {
-            con.Open();
+            conn.Open();
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
             if (TextBox1.Text =="" || TextBox2.Text=="")
@@ -37,12 +37,12 @@ public partial class logibnpage : System.Web.UI.Page
             }
             
             
-            con.Close();
+            conn.Close();
 
         }
         catch (Exception)
         {
-            con.Close();
+            conn.Close();
         }
 
     }
